@@ -6,8 +6,8 @@ import dotenv from 'dotenv';
 
 connectToDatabase();
 dotenv.config();
-
 const app = express();
+
 app.use(express.json());
 app.use(cors ());
 app.use('/api/auth' , authRouter)

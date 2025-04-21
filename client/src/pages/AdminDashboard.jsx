@@ -1,9 +1,19 @@
-
+import React from "react";
+import { useAuth } from "../context/authContext";
+import { useNavigate } from "react-router-dom";
 
 const AdminDashboard = () => {
+    const {user, loading} = useAuth()
+    const navigate = useNavigate()
 
-    return (
-        <div>AdminDashboard</div>
+    if(loading ){
+        return <div>Loading.........</div>
+    }
+    if(!user){
+        navigate('/')
+    }
+    return(
+        <div> AdminDssashboard {user && user.name}</div>
     )
 }
 
