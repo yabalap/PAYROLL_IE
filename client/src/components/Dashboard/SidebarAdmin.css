@@ -1,0 +1,103 @@
+.container {
+    display: flex;
+    height: 100vh; /* Full viewport height */
+}
+
+.sidebar {
+    background-color: #2F3538; /* Sidebar background color */
+    color: white;
+    height: 100%; /* Full height */
+    width: 15.2rem; /* Default width for the sidebar */
+    position: fixed; /* Fix the sidebar to the left */
+    left: 0;
+    top: 0;
+    display: flex;
+    flex-direction: column; /* Stack items vertically */
+    overflow-y: auto; /* Enable scrolling if content overflows */
+    z-index: 1000; /* Ensure sidebar is above other elements */
+    transition: width 0.3s ease; /* Smooth transition for width changes */
+}
+
+.sidebar.collapsed {
+    width: 3rem; /* Reduced width when sidebar is contracted */
+}
+
+.bar {
+    display: flex;
+    font-size: 1.8rem;
+    margin-left: 3rem;
+    cursor: pointer;
+}
+
+.top_section {
+    display: flex;
+    align-items: center;
+    padding: 1.3rem;
+}
+
+.link {
+    display: flex;
+    margin-left: 0.3rem;
+    margin-right: 0.3rem;
+    margin-bottom: 1rem;
+    color: white;
+    padding: 0.7rem 1rem;
+    border: none;
+    gap: 1rem;
+    transition: all 0.5s;
+    text-decoration: none; /* Remove underline from links */
+}
+
+.link:hover {
+    background-color: #1D6F12;
+    color: white;
+    transition: all 0.5s;
+    border-radius: 5%;
+}
+
+.active {
+    background-color: #1D6F12;
+    color: white;
+    border-radius: 5%;
+}
+
+.icon,
+.link_text {
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+}
+
+.link_text {
+    display: inline; /* Default display for link text */
+    transition: opacity 0.3s ease; /* Smooth transition for text visibility */
+    font-size: 20px;
+}
+
+.sidebar.collapsed .link_text {
+    display: none; /* Hide link text when sidebar is collapsed */
+}
+
+main {
+    margin-left: var(--sidebar-width, 15.2rem); /* Use a CSS variable for dynamic margin */
+    width: calc(100% - var(--sidebar-width, 15.2rem)); /* Adjust width dynamically */
+    padding: 3rem;
+    background-color: #f4f4f4;
+    height: auto;
+    overflow-y: auto;
+    transition: margin-left 0.3s ease, width 0.3s ease;
+}
+
+.sidebar.collapsed + main {
+    --sidebar-width: 4rem; /* Update the CSS variable when the sidebar is collapsed */
+}
+
+.menu_items {
+    flex-grow: 1; /* This pushes the logout button to the bottom */
+    display: flex;
+    flex-direction: column;
+}
+
+.logout_section {
+    margin-bottom: 2rem;
+}

@@ -7,8 +7,17 @@ import EmployeeDashboard from './pages/EmployeeDashboard';
 import PrivateRoutes from './utils/PrivateRoutes';
 import RoleBaseRoutes from './utils/RoleBaseRoutes';
  
+import Sidebar from '../src/components/Dashboard/AdminSidebar';
 
-
+// Layout component to include Sidebar
+const Layout = ({ children }) => {
+  return (
+    <div className="app-layout">
+      <Sidebar />
+      <div className="content">{children}</div>
+    </div>
+  );
+};
 function App() {
 
   return (
@@ -18,17 +27,16 @@ function App() {
           <Route path='/login' element={<Login/>} ></Route>
 
           <Route path='/admin-dashboard' element={
+            <Sidebar>
+              <PrivateRoutes>
+                  <RoleBaseRoutes requiredRole={["admin"]}>
 
-            <PrivateRoutes>
-              <RoleBaseRoutes requiredRole={["admin"]}>
+                    <AdminDashboard/>
 
-              <AdminDashboard/>
+                  </RoleBaseRoutes>
+              </PrivateRoutes>
+            </Sidebar>
 
-              </RoleBaseRoutes>
-            </PrivateRoutes>
-            
-            
-            
             } ></Route>
           <Route path='/employee-dashboard' element={<EmployeeDashboard/>} ></Route>
       </Routes>
