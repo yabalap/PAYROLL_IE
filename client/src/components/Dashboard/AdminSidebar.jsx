@@ -17,18 +17,18 @@ const AdminSidebar = ({ children }) => {
     const [isOpen, setIsOpen] = useState(true);
 
     const menulist = [
-        {
+        {   
             path: "/admin-dashboard",
             name: "Dashboard",
             icon: <LuLayoutDashboard />
         },
         {
-            path: "/employee",
+            path: "/admin-dashboard/employee-admin",
             name: "Employee",
             icon: <FaUsers />
         },
         {
-            path: "/department",
+            path: "/admin-dashboard/departmentadmin",
             name: "Department",
             icon: <FaRegBuilding />
         },
@@ -69,17 +69,18 @@ const AdminSidebar = ({ children }) => {
 
                 <div className="menu_items">
                     {menulist.map((el, i) => (
-                        <NavLink
-                            to={el.path}
-                            key={i}
-                            className="link"
-                            activeClassName="active"
-                        >
-                            <div className="icon">{el.icon}</div>
-                            <div className="link_text" style={{ display: isOpen ? "block" : "none" }}>
-                                {el.name}
-                            </div>
-                        </NavLink>
+                    <NavLink
+                    to={el.path}
+                    key={i}
+                    className={({ isActive }) => isActive ? "link active" : "link"}
+                    end
+                    >
+                    <div className="icon">{el.icon}</div>
+                    <div className="link_text" style={{ display: isOpen ? "block" : "none" }}>
+                    {el.name}
+                    </div>
+                    </NavLink>
+
                     ))}
                 </div>
 

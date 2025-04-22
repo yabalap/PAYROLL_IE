@@ -1,49 +1,40 @@
-import { BrowserRouter, Route, Routes, Navigate} from 'react-router-dom';
+import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom';
 import React from "react";
 
 import Login from '../src/pages/Login';
-import AdminDashboard from "./pages/AdminDashboard"; // assuming 'pages' is in the same directory
-import EmployeeDashboard from './pages/EmployeeDashboard';
+import AdminDashboard from "./pages/Admin/AdminDashboard";
+import EmployeeDashboard from './pages/Employee/EmployeeDashboard';
 import PrivateRoutes from './utils/PrivateRoutes';
 import RoleBaseRoutes from './utils/RoleBaseRoutes';
- 
+
+import DashboardAdmin from '../src/components/Dashboard/DashboardAdmin';
+import DepartmentAdmin from "../src/components/Department/DepartmentAdmin";
 import Sidebar from '../src/components/Dashboard/AdminSidebar';
 
-// Layout component to include Sidebar
-const Layout = ({ children }) => {
-  return (
-    <div className="app-layout">
-      <Sidebar />
-      <div className="content">{children}</div>
-    </div>
-  );
-};
 function App() {
-
   return (
     <BrowserRouter>
       <Routes>
-          <Route path='/' element={<Navigate to= '/login' />} ></Route>
-          <Route path='/login' element={<Login/>} ></Route>
+        <Route path='/' element={<Navigate to='/login' />} />
+        <Route path='/login' element={<Login />} />
 
-          <Route path='/admin-dashboard' element={
-            <Sidebar>
-              <PrivateRoutes>
-                  <RoleBaseRoutes requiredRole={["admin"]}>
+        <Route path='/admin-dashboard' element={
+          <Sidebar>
+            <PrivateRoutes>
+              <RoleBaseRoutes requiredRole={["admin"]}>
+                <AdminDashboard />
+              </RoleBaseRoutes>
+            </PrivateRoutes>
+          </Sidebar>
+        }>
+          <Route index element={<DashboardAdmin />} />
+          <Route path='departmentadmin' element={<DepartmentAdmin />} /> {/* ✅ updated relative path */}
+        </Route>
 
-                    <AdminDashboard/>
-
-                  </RoleBaseRoutes>
-              </PrivateRoutes>
-            </Sidebar>
-
-            } ></Route>
-          <Route path='/employee-dashboard' element={<EmployeeDashboard/>} ></Route>
+        <Route path='/employee-dashboard' element={<EmployeeDashboard />} />
       </Routes>
-    
     </BrowserRouter>
- 
-  )
+  );
 }
 
-export default App
+export default App;
