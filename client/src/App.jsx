@@ -10,6 +10,8 @@ import RoleBaseRoutes from './utils/RoleBaseRoutes';
 import DashboardAdmin from '../src/components/Dashboard/DashboardAdmin';
 import DepartmentAdmin from "../src/components/Department/DepartmentAdmin";
 import Sidebar from '../src/components/Dashboard/AdminSidebar';
+import AddDepartment from './components/Department/AddDepartment';
+import UpdateDepartment from './components/Department/UpdateDepartment';
 
 function App() {
   return (
@@ -28,7 +30,11 @@ function App() {
           </Sidebar>
         }>
           <Route index element={<DashboardAdmin />} />
-          <Route path='departmentadmin' element={<DepartmentAdmin />} /> {/* ✅ updated relative path */}
+          <Route path='departmentadmin' element={<DepartmentAdmin />} />
+          <Route path='add-department' element={<AddDepartment />} />
+          <Route path='department/:id' element={<UpdateDepartment />} />
+
+
         </Route>
 
         <Route path='/employee-dashboard' element={<EmployeeDashboard />} />
