@@ -179,3 +179,104 @@ button.txt_add:hover {
     transform: scale(1.05);
 }
 
+/* === Custom Pagination === */
+.custom-pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.custom-pagination button {
+    padding: 0.4rem 0.9rem;
+    background-color: #f0f0f0;
+    color: #2F3538;
+    font-family: 'Roboto Slab';
+    font-weight: bold;
+    font-size: 0.9rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.custom-pagination button:hover {
+    background-color: #dcdcdc;
+    transform: scale(1.05);
+}
+
+.custom-pagination button:disabled {
+    background-color: #e0e0e0;
+    color: #a0a0a0;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.custom-pagination button.active {
+    background-color: #2F3538;
+    color: white;
+}
+.pagination-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 100%;
+    margin-top: 1rem;
+}
+
+.rows-per-page {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: 'Roboto Slab';
+    font-size: 0.95rem;
+}
+
+.rows-per-page select {
+    padding: 0.3rem 0.6rem;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-family: inherit;
+    font-size: 0.95rem;
+    background-color: #f9f9f9;
+    cursor: pointer;
+}
+
+.custom-pagination {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.custom-pagination button {
+    padding: 0.4rem 0.9rem;
+    background-color: #f0f0f0;
+    color: #2F3538;
+    font-family: 'Roboto Slab';
+    font-weight: bold;
+    font-size: 0.9rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.custom-pagination button:hover {
+    background-color: #dcdcdc;
+    transform: scale(1.05);
+}
+
+.custom-pagination button:disabled {
+    background-color: #e0e0e0;
+    color: #a0a0a0;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.custom-pagination button.active {
+    background-color: #2F3538;
+    color: white;
+}
