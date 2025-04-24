@@ -1,0 +1,139 @@
+main{
+    margin: 0%;
+}
+.form_container {
+    width: 100%;
+    padding: 30px;
+    background-color: white;
+    box-shadow: none;
+    border-radius: 0;
+}
+
+.employee_form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px 40px;
+    width: 100%;
+    font-family: 'Roboto Slab';
+    background: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    /* margin-top removed */
+}
+
+
+.employee_form h3.title_employee {
+    grid-column: 1 / -1;
+    font-size: 28px;
+    font-weight: 600;
+    text-align: left;
+    margin-bottom: 10px;
+}
+
+.employee_form div {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.txt_employee {
+    font-weight: 500;
+    margin-bottom: 6px;
+    text-align: left;
+    font-size: 14px;
+    max-width: 350px;
+    width: 100%;
+}
+
+/* Updated input styling */
+.employee_form input {
+    padding: 10px;
+    font-size: 1rem;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 350px;
+    background-color: #f9f9f9;
+    box-sizing: border-box;
+    margin-left: 0%;
+    font-family: inherit;
+}
+
+/* File input tweak */
+.employee_form input[type="file"] {
+    padding: 4px;
+}
+
+/* Updated select styling */
+.employee_form select {
+    padding: 10px;
+    font-size: 1rem;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 350px;
+    background-color: #f9f9f9;
+    box-sizing: border-box;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='7' viewBox='0 0 10 7'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23666' stroke-width='2' fill='none' fill-rule='evenodd'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 12px;
+    padding-right: 30px;
+    font-family: inherit;
+}
+
+/* Updated button styling */
+.employee_form button[name="btn_add"] {
+    margin-top: 30px;
+    padding: 12px 40px;
+    font-size: 16px;
+    background: #2F3538;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    font-family: 'Roboto Slab';
+    justify-self: start;
+}
+
+.employee_form button[name="btn_add"]:hover {
+    background-color: #1d6f12;
+    transform: scale(1.05);
+}
+
+.btn_wrapper {
+    display: flex;
+    justify-content: center;
+    margin-right: 100%;
+    margin-top: 30px;
+}
+
+
+.upload_wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    max-width: 350px;
+    width: 100%;
+}
+
+.upload_btn {
+    padding: 0.6rem 1.2rem;
+    background-color: #2F3538;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-family: 'Roboto Slab';
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-top: 6px;
+}
+
+.upload_btn:hover {
+    background-color: #1d6f12;
+    transform: scale(1.05);
+}

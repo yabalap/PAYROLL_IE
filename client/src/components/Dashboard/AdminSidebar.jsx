@@ -23,7 +23,7 @@ const AdminSidebar = ({ children }) => {
             icon: <LuLayoutDashboard />
         },
         {
-            path: "/admin-dashboard/employee-admin",
+            path: "/admin-dashboard/employeeadmin",
             name: "Employee",
             icon: <FaUsers />
         },

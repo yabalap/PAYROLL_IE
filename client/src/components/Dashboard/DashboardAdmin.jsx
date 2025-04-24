@@ -1,6 +1,6 @@
 // AdminDashboard.js
 import React, { useEffect } from "react";
-import { useAuth } from "../../context/authContext";
+import { useAuth } from "../../context/AuthContext";
 import { useNavigate } from "react-router-dom"; // Import the navigate hook
 import { FaUsers } from "react-icons/fa";
 import { FaRegBuilding } from "react-icons/fa";
