@@ -1,6 +1,15 @@
-import React from "react";
-
+import React, { useEffect, useState } from "react";
+import { fetchDepartments } from "../../utils/EmployeeColumn";
 const AddEmployee = () => {
+
+    const [departments, setDepartments] = useState([])
+    useEffect(() => {
+        const getDepartments = async () =>{
+        const departments = await fetchDepartments();
+        setDepartments(departments)
+        }
+        getDepartments()
+    }, [])
 
     return(
             <div className="form_container">
@@ -123,19 +132,34 @@ const AddEmployee = () => {
                             required>
 
                         <option value="">Select Department</option>
+                        {departments.map(dep => (
+                            <option key={dep._id} value={dep._id}>{dep.dep_name}</option>
+                        ))}
+
                         </select>
                         </div>
 
-                        {/* Salary*/}
+                        {/* Salary/Monthly (Allowance included if there's*/}
                         <div>
                             <label className="txt_employee">Salary</label>
                             <input 
                             type="number" 
-                            name="salary"
+                            name="salaryMon"
                             placeholder="Salary"
                             required
                             />
                         </div>    
+
+                        {/* Salary per Day*/}
+                        <div>
+                            <label className="txt_employee">Salary per Day</label>
+                            <input 
+                            type="number" 
+                            name="salaryDay"
+                            placeholder="Salary"
+                            required
+                            />
+                        </div>  
 
                         {/* Password*/}
                         <div>
@@ -158,6 +182,7 @@ const AddEmployee = () => {
                                 <option value="">Select Role</option>
                                 <option value="admin">Admin</option>
                                 <option value="employee">Employee</option>
+                                <option value="employee">Contractual</option>
                             </select>
                         </div>                                                                    
 
