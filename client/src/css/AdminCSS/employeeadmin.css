@@ -1,139 +1,139 @@
-main{
-    margin: 0%;
-}
-.form_container {
-    width: 100%;
-    padding: 30px;
-    box-shadow: none;
-    border-radius: 0;
-}
-
-.employee_form {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px 40px;
-    width: 100%;
-    font-family: 'Roboto Slab';
-    background: #f9f9f9;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    padding: 2rem;
-    /* margin-top removed */
-}
-
-
-.employee_form h3.title_employee {
-    grid-column: 1 / -1;
-    font-size: 28px;
-    font-weight: 600;
-    text-align: left;
-    margin-bottom: 10px;
-}
-
-.employee_form div {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-}
-
-.txt_employee {
-    font-weight: 500;
-    margin-bottom: 6px;
-    text-align: left;
-    font-size: 14px;
-    max-width: 350px;
-    width: 100%;
-}
-
-/* Updated input styling */
-.employee_form input {
-    padding: 10px;
-    font-size: 1rem;
-    border: 2px solid #ccc;
-    border-radius: 8px;
-    width: 100%;
-    max-width: 350px;
-    background-color: #f9f9f9;
-    box-sizing: border-box;
-    margin-left: 0%;
-    font-family: inherit;
-}
-
-/* File input tweak */
-.employee_form input[type="file"] {
-    padding: 4px;
-}
-
-/* Updated select styling */
-.employee_form select {
-    padding: 10px;
-    font-size: 1rem;
-    border: 2px solid #ccc;
-    border-radius: 8px;
-    width: 100%;
-    max-width: 350px;
-    background-color: #f9f9f9;
-    box-sizing: border-box;
-    appearance: none;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='7' viewBox='0 0 10 7'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23666' stroke-width='2' fill='none' fill-rule='evenodd'/%3E%3C/svg%3E");
-    background-repeat: no-repeat;
-    background-position: right 10px center;
-    background-size: 12px;
-    padding-right: 30px;
-    font-family: inherit;
-}
-
-/* Updated button styling */
-.employee_form button[name="btn_add"] {
-    margin-top: 30px;
-    padding: 12px 40px;
-    font-size: 16px;
-    background: #2F3538;
-    color: white;
+/* General button styling */
+.action_buttons button {
+    padding: 0.2rem 0.5rem;  /* Even smaller padding for more compact buttons */
+    font-size: 0.75rem;       /* Smaller font size */
+    border-radius: 3px;      /* Reduced border radius for a more compact appearance */
     border: none;
-    border-radius: 8px;
     cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-    font-family: 'Roboto Slab';
-    justify-self: start;
+    transition: transform 0.2s ease;
+    margin: 0 0.3rem;         /* Space between buttons */
 }
 
-.employee_form button[name="btn_add"]:hover {
-    background-color: #1d6f12;
+/* Specific button styles */
+.view_btn {
+    background-color: #4CAF50; /* Green */
+    color: white;
+}
+
+.view_btn:hover {
+    background-color: #45a049;
     transform: scale(1.05);
 }
 
-.btn_wrapper {
-    display: flex;
-    justify-content: center;
-    margin-right: 100%;
-    margin-top: 30px;
+.update_btn {
+    background-color: #008CBA; /* Blue */
+    color: white;
 }
 
+.update_btn:hover {
+    background-color: #007bb5;
+    transform: scale(1.05);
+}
 
-.upload_wrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    max-width: 350px;
+.pay_btn {
+    background-color: #f44336; /* Red */
+    color: white;
+}
+
+.pay_btn:hover {
+    background-color: #da190b;
+    transform: scale(1.05);
+}
+
+.delete_btn {
+    background-color: #e7e7e7; /* Gray */
+    color: black;
+}
+
+.delete_btn:hover {
+    background-color: #d4d4d4;
+    transform: scale(1.05);
+}
+
+/* Table Styles */
+.employee_table {
     width: 100%;
+    margin-top: 1rem;
 }
 
-.upload_btn {
-    padding: 0.6rem 1.2rem;
+table {
+    width: 100%;
+    border-collapse: collapse;  /* Ensures no spacing between cells */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Optional: Add a shadow for better table visibility */
+}
+
+thead {
     background-color: #2F3538;
     color: white;
-    border: none;
-    border-radius: 8px;
-    font-size: 1rem;
     font-family: 'Roboto Slab';
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-    margin-top: 6px;
+    font-weight: bold;
+    font-size: 16px;
 }
 
-.upload_btn:hover {
-    background-color: #1d6f12;
+th,
+td {
+    padding: 10px;
+    text-align: left;
+    font-family: 'Roboto Slab';
+    font-size: 14px;
+    border-bottom: 1px solid #ddd;  /* Add a subtle border between rows */
+}
+
+/* Make the Action Column Buttons More Compact */
+.column-Action {
+    display: flex;
+    justify-content: space-evenly;
+    gap: 0.5rem;
+}
+
+.column-Action button {
+    padding: 0.2rem 0.5rem; /* Smaller padding for compact buttons */
+    font-family: 'Roboto Slab';
+    font-size: 0.75rem;       /* Smaller font size */
+    font-weight: bold;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    min-width: 60px; /* Ensures the buttons remain compact */
+}
+
+/* === Pagination Styles === */
+.custom-pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.custom-pagination button {
+    padding: 0.4rem 0.9rem;
+    background-color: #f0f0f0;
+    color: #2F3538;
+    font-family: 'Roboto Slab';
+    font-weight: bold;
+    font-size: 0.9rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.custom-pagination button:hover {
+    background-color: #dcdcdc;
     transform: scale(1.05);
 }
 
+.custom-pagination button:disabled {
+    background-color: #e0e0e0;
+    color: #a0a0a0;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.custom-pagination button.active {
+    background-color: #2F3538;
+    color: white;
+}

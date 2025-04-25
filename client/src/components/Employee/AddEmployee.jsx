@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { fetchDepartments } from "../../utils/EmployeeColumn";
 import axios from 'axios';
 import { useNavigate} from "react-router-dom"
+import '../../css/AdminCSS/employeeAdd.css';
 
 const AddEmployee = () => {
 

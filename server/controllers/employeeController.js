@@ -91,6 +91,22 @@ const addEmployee = async (req, res) => {
         return res.status(500).json({ success: false, message: "Server Error in Adding Employee" });
     }
 }
+ 
+import Department from "../models/Department.js"; // add if not imported
+
+const getEmployees = async (req, res) => {
+    try {
+        const employees = await Employee.find()
+            .populate("userId", "name role")  // Populate `name` and `role` fields from the `User` model
+            .populate("department");
+
+        const departments = await Department.find();
+
+        return res.status(200).json({ success: true, employees, departments });
+    } catch (error) {
+        return res.status(500).json({ success: false, error: "get Employee server error" });
+    }
+};
 
 
-export { addEmployee, upload }
+export { addEmployee, upload, getEmployees }
