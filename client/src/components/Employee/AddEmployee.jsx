@@ -1,6 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { fetchDepartments } from "../../utils/EmployeeColumn";
+import axios from 'axios';
+import { useNavigate} from "react-router-dom"
+
 const AddEmployee = () => {
+
+
+    const navigate = useNavigate();
+    const [formData, setFormData] = useState({});
 
     const [departments, setDepartments] = useState([])
     useEffect(() => {
@@ -11,9 +18,46 @@ const AddEmployee = () => {
         getDepartments()
     }, [])
 
+    const handleChange = (e) => {
+        const {name, value, files} = e.target
+        if(name === "image") {
+            setFormData((prevData) => ({...prevData, [name] : files[0]}))
+        } else{
+            setFormData((prevData) => ({...prevData, [name] : value}))
+        }
+    }
+
+    const handleSubmit =  async (e) => {
+
+        e.preventDefault()
+
+        const formDataObj = new FormData()
+        Object.keys(formData).forEach((key) => {
+            formDataObj.append(key, formData[key]);
+        });
+        
+
+        try {
+            const response = await axios.post('http://localhost:5000/api/employee/add' , 
+                formDataObj, {
+                headers: {
+                    "Authorization" : `Bearer ${localStorage.getItem('token')}`
+                }
+            })
+            if(response.data.success){
+                navigate("/admin-dashboard/employeeadmin")
+            
+            }
+        } catch (error) {
+            if(error.response && !error.response.data.error){
+                alert(error.response.data.error)
+            }
+        }
+    
+    }
     return(
             <div className="form_container">
-                    <form 
+                    <form onSubmit={handleSubmit}
                     className="employee_form">
 
                     <h3 className="title_employee">Add Employee</h3>
@@ -24,6 +68,7 @@ const AddEmployee = () => {
                             <input 
                             type="text" 
                             name="firstName"
+                            onChange={handleChange}
                             placeholder="Enter First Name"
                             required
                             />
@@ -35,6 +80,7 @@ const AddEmployee = () => {
                             <input 
                             type="text" 
                             name="middleName"
+                            onChange={handleChange}
                             placeholder="Enter Middle Name"
                             required
                             />
@@ -46,6 +92,7 @@ const AddEmployee = () => {
                             <input 
                             type="text" 
                             name="lastName"
+                            onChange={handleChange}
                             placeholder="Enter Last Name"
                             required
                             />
@@ -57,6 +104,7 @@ const AddEmployee = () => {
                             <input 
                             type="text" 
                             name="employeeID"
+                            onChange={handleChange}
                             placeholder="Enter Employee ID"
                             required
                             />
@@ -68,6 +116,7 @@ const AddEmployee = () => {
                             <input 
                             type="email" 
                             name="email"
+                            onChange={handleChange}
                             placeholder="Enter Email"
                             required
                             />
@@ -79,6 +128,7 @@ const AddEmployee = () => {
                             <input 
                             type="date" 
                             name="dob"
+                            onChange={handleChange}
                             placeholder="Date of Birth"
                             required
                             />
@@ -90,6 +140,7 @@ const AddEmployee = () => {
                             
                             <select
                             name="gender"
+                            onChange={handleChange}
                             required>
                                 <option value="">Select Gender</option>
                                 <option value="male">Male</option>
@@ -104,6 +155,7 @@ const AddEmployee = () => {
                             
                             <select
                             name="maritalStatus"
+                            onChange={handleChange}
                             placeholder="Marital Status"
                             required>
                                 <option value="">Select Status</option>
@@ -119,6 +171,7 @@ const AddEmployee = () => {
                             <input 
                             type="text" 
                             name="position"
+                            onChange={handleChange}
                             placeholder="Position"
                             required
                             />
@@ -129,6 +182,7 @@ const AddEmployee = () => {
                             <label className="txt_employee">Department</label>      
                         <select
                             name="department"
+                            onChange={handleChange}
                             required>
 
                         <option value="">Select Department</option>
@@ -145,7 +199,8 @@ const AddEmployee = () => {
                             <input 
                             type="number" 
                             name="salaryMon"
-                            placeholder="Salary"
+                            onChange={handleChange}
+                            placeholder="Enter Salary ( Enter 0 if N/A )"
                             required
                             />
                         </div>    
@@ -156,7 +211,8 @@ const AddEmployee = () => {
                             <input 
                             type="number" 
                             name="salaryDay"
-                            placeholder="Salary"
+                            onChange={handleChange}
+                            placeholder="Enter Salary ( Enter 0 if N/A )"
                             required
                             />
                         </div>  
@@ -167,6 +223,7 @@ const AddEmployee = () => {
                             <input 
                             type="password" 
                             name="password"
+                            onChange={handleChange}
                             placeholder="Enter Password"
                             required
                             />
@@ -178,11 +235,12 @@ const AddEmployee = () => {
                             
                             <select
                             name="role"
+                            onChange={handleChange}
                             required>
                                 <option value="">Select Role</option>
                                 <option value="admin">Admin</option>
                                 <option value="employee">Employee</option>
-                                <option value="employee">Contractual</option>
+                                <option value="contractual">Contractual</option>
                             </select>
                         </div>                                                                    
 
@@ -194,10 +252,14 @@ const AddEmployee = () => {
                                 type="file" 
                                 id="employee_image"
                                 name="image"
+                                onChange={handleChange}
                                 accept="image/*"
-                                hidden
+                                
                             />
+
                         </div>
+
+
  
                         {/* Submit Button */}
                         <div className="btn_wrapper">
