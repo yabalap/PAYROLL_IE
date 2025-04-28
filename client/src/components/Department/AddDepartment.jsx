@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import '../../css/AdminCSS/departmentadmin.css';
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-
+import '../../App.css';  // Going two levels up to the src directory
 const AddDepartment = () => {
 
     const[department, setDepartment] = useState({

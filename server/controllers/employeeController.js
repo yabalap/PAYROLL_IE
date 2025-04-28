@@ -4,7 +4,7 @@ import User from "../models/User.js"
 import bcrypt from 'bcrypt'
 import path from "path"
 import fs from 'fs'
-import Department from "../models/Department.js"; // add if not imported
+import Department from "../models/Department.js"; 
 
 // Ensure upload folder exists
 const uploadPath = "public/uploads"
@@ -116,11 +116,74 @@ const getEmployee = async (req, res) => {
         return res.status(200).json({ success: true, employee });
     } catch (error) {
         console.error(error);  // For debugging purposes
-        return res.status(500).json({ success: false, error: "Server error while fetching employee" });
+        return res.status(500).json({ success: false, error: "Server error while fetching  get employee" });
+    }
+};
+const updateEmployee = async (req, res) => {
+    try {
+        const { id } = req.params;  // Extract employee ID from the URL parameters
+        const {
+            firstName,
+            middleName,
+            lastName,
+            maritalStatus,
+            position,
+            department,
+            salaryMon,
+            salaryDay,
+        } = req.body;  // Extract the update fields from the request body
+
+        // Find the employee using the provided ID
+        const employee = await Employee.findById(id);
+
+        if (!employee) {
+            return res.status(404).json({ success: false, error: "Employee not found" });
+        }
+
+        // Find the associated user (since it's a separate model)
+        const user = await User.findById(employee.userId);
+
+        if (!user) {
+            return res.status(404).json({ success: false, error: "User not found" });
+        }
+
+        // Construct the full name from the first, middle, and last names
+        const fullName = [firstName, middleName, lastName].filter(Boolean).join(" ");
+
+        // Update the User record (name and other fields if necessary)
+        const updatedUser = await User.findByIdAndUpdate(
+            { _id: employee.userId },
+            { name: fullName },  // Update name to the full name (combining first, middle, last)
+            { new: true }  // Return the updated user document
+        );
+
+        // Update the Employee record with the new data
+        const updatedEmployee = await Employee.findByIdAndUpdate(
+            { _id: id },
+            {
+                maritalStatus,
+                position,
+                department,
+                salaryMon,
+                salaryDay,
+                role
+            },
+            { new: true }  // Return the updated employee document
+        );
+
+        if (!updatedEmployee || !updatedUser) {
+            return res.status(404).json({ success: false, error: "Update failed, document not found" });
+        }
+
+        // Send a success response
+        return res.status(200).json({ success: true, message: "Employee updated successfully" });
+
+    } catch (error) {
+        console.error("Error updating employee:", error);
+        return res.status(500).json({ success: false, error: "Server error while updating employee" });
     }
 };
 
 
 
-
-export { addEmployee, upload, getEmployees , getEmployee}
+export { addEmployee, upload, getEmployees , getEmployee, updateEmployee}

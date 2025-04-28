@@ -4,6 +4,7 @@ import axios from 'axios';
 import '../../css/AdminCSS/departmentadmin.css';
 import DataTable from 'react-data-table-component';
 import { columns, DepartmentButtons } from "../../utils/DepartmentColumn";
+import '../../App.css';  
 
 const DepartmentAdmin = () => {
     const [departmentList, setDepartmentList] = useState([]);

@@ -3,6 +3,7 @@ import { fetchDepartments } from "../../utils/EmployeeColumn";
 import axios from 'axios';
 import { useNavigate} from "react-router-dom"
 import '../../css/AdminCSS/employeeAdd.css';
+import '../../App.css';  
 
 const AddEmployee = () => {
 
@@ -259,9 +260,6 @@ const AddEmployee = () => {
                             />
 
                         </div>
-
-
- 
                         {/* Submit Button */}
                         <div className="btn_wrapper">
                         <button name="btn_add">Add Employee</button>

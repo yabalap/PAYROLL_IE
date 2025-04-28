@@ -1,6 +1,15 @@
-main{
-    margin: 0%;
+html, body {
+    height: 100%;  /* Ensures full height for both html and body */
+    margin: 0;     /* Removes default margin */
+    padding: 0;    /* Removes default padding */
+    overflow-y: auto;    /* Ensures vertical scrolling */
 }
+
+main {
+    margin: 0;
+    min-height: 100%; /* Ensures main element takes up at least full viewport height */
+}
+
 .form_container {
     width: 100%;
     padding: 30px;

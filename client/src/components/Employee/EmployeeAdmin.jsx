@@ -4,6 +4,7 @@ import '../../css/AdminCSS/employeeadmin.css';
 import DataTable from 'react-data-table-component';
 import { columns, EmployeeButtons } from "../../utils/EmployeeColumn";
 import axios from "axios";
+import '../../App.css';  
 
 const EmployeeAdmin = () => {
     const [employees, setEmployees] = useState([]);

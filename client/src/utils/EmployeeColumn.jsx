@@ -75,7 +75,7 @@ export const EmployeeButtons = ({ _id }) => {
                 onClick={() => navigate(`/admin-dashboard/employeeadmin/${_id}`)} // Use the _id prop here
                 >View</button>
             <button className="update_btn"
-            
+                onClick={() => navigate(`/admin-dashboard/employeeadmin/update/${_id}`)} // Use the _id prop here
             >Update</button>
             <button className="pay_btn"
             
@@ -86,4 +86,3 @@ export const EmployeeButtons = ({ _id }) => {
         </div>
     );
 };
-

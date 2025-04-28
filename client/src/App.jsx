@@ -15,6 +15,7 @@ import UpdateDepartment from './components/Department/UpdateDepartment';
 import EmployeeAdmin from './components/Employee/EmployeeAdmin';
 import AddEmployee from './components/Employee/AddEmployee';
 import ViewEmployee from './components/Employee/ViewEmployee';
+import UpdateEmployee from './components/Employee/UpdateEmployee';
 
 function App() {
   return (
@@ -40,9 +41,9 @@ function App() {
           <Route path='employeeadmin' element={<EmployeeAdmin />} />
           <Route path='add-employee' element={<AddEmployee />} />
           <Route path='employeeadmin/:id' element={<ViewEmployee />} />
-
-
+          <Route path='employeeadmin/update/:id' element={<UpdateEmployee />} /> {/* Fixed this path */}
         </Route>
+
 
         <Route path='/employee-dashboard' element={<EmployeeDashboard />} />
       </Routes>

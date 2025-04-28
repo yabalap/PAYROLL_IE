@@ -1,73 +1,103 @@
-/* General Container */
-.employee_containers {
-    display: flex;
-    flex-direction: column; /* Stack elements vertically */
-    align-items: center; /* Center content horizontally */
-    justify-content: center; /* Center content vertically */
-    height: 100vh; /* Ensure the container takes up the full height of the viewport */
-    padding: 40px; /* Increased padding */
-    width: 100%;
+/* Ensure full height layout for the page */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-y: auto;
 }
 
-/* View Employee Section */
+main {
+    margin: 0;
+    min-height: 100%;
+}
+
+.employee_containers {
+    margin-left: 16%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 0.5rem; /* Increased padding */
+}
+
 .view_employee {
-    padding-bottom: 10%; /* Increased bottom padding */
-    margin-top: 5%; /* Added more space on top */
-    max-width: 1000px; /* Increased max width */
+    width: 100%;
+    max-width: 1200px; /* Increased max-width */
 }
 
 .employee_details {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Equal 2 columns for image and content */
+    gap: 50px; /* Increased gap */
+    font-family: 'Roboto Slab';
     background: #f9f9f9;
-    padding: 3rem; /* Increased padding for more space */
-    border-radius: 10px; /* Slightly more rounded corners */
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1); /* Stronger shadow for more depth */
+    border-radius: 10px; /* Increased border radius */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1); /* Increased shadow for a bigger effect */
+    padding: 3rem; /* Increased padding */
 }
 
 .profile_image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 100%;
     text-align: center;
-    margin-bottom: 2rem; /* More space below the profile image */
 }
 
 .profile_image img {
-    max-width: 200px; /* Larger image */
+    max-width: 100%;
+    width: 100%;
+    height: auto;
+    max-height: 300px; /* Increased max height for the profile image */
     border-radius: 50%;
 }
 
 .employee_info {
     display: flex;
     flex-direction: column;
-    gap: 1.5rem; /* Increased gap between the information sections */
+    align-items: flex-start;
 }
 
+/* Employee info fields */
 .view_con {
     display: flex;
-    justify-content: space-between;
-    margin-bottom: 1.5rem; /* Added more space between items */
+    justify-content: space-between; /* Ensures the label and info are spaced */
+    margin-bottom: 15px; /* Increased margin bottom */
+    width: 100%;
+    align-items: center;
 }
 
 .view_txt {
-    font-weight: bold;
-    color: #2F3538;
-    font-size: 1.1rem; /* Slightly larger text */
+    font-weight: 600; /* Increased font weight */
+    margin-bottom: 8px; /* Increased margin bottom */
+    font-size: 16px; /* Increased font size */
+    width: 180px; /* Increased width to fit larger labels */
+    white-space: nowrap; /* Ensures the label stays on one line */
 }
 
 .view_info {
+
+    font-size: 16px; /* Increased font size */
+    font-weight: 400;
     color: #555;
-    font-style: italic;
-    font-size: 1.1rem; /* Slightly larger text */
+    white-space: nowrap; /* Prevents the text from wrapping */
+    width: calc(100% - 190px); /* Increased width to match label */
 }
 
-/* Hide scrollbar (for Chrome, Safari, Edge) */
-main {
-    scrollbar-width: none; /* Firefox */
-    overflow: hidden;
-}
+/* Styling for screen sizes smaller than 768px */
+@media (max-width: 768px) {
+    .employee_details {
+        grid-template-columns: 1fr; /* Stack columns vertically */
+    }
 
-body::-webkit-scrollbar {
-    display: none; /* Chrome, Safari */
-}
+    .profile_image img {
+        max-width: 200px; /* Larger image on small screens */
+    }
 
-/* For Chrome, Safari, and Edge: */
-body {
-    overflow-x: hidden; /* Disable horizontal scrolling */
+    .view_txt {
+        font-size: 18px; /* Larger font size on smaller screens */
+    }
+
+    .view_info {
+        font-size: 18px; /* Larger font size on smaller screens */
+    }
 }
