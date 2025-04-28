@@ -1,0 +1,73 @@
+/* General Container */
+.employee_containers {
+    display: flex;
+    flex-direction: column; /* Stack elements vertically */
+    align-items: center; /* Center content horizontally */
+    justify-content: center; /* Center content vertically */
+    height: 100vh; /* Ensure the container takes up the full height of the viewport */
+    padding: 40px; /* Increased padding */
+    width: 100%;
+}
+
+/* View Employee Section */
+.view_employee {
+    padding-bottom: 10%; /* Increased bottom padding */
+    margin-top: 5%; /* Added more space on top */
+    max-width: 1000px; /* Increased max width */
+}
+
+.employee_details {
+    background: #f9f9f9;
+    padding: 3rem; /* Increased padding for more space */
+    border-radius: 10px; /* Slightly more rounded corners */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1); /* Stronger shadow for more depth */
+}
+
+.profile_image {
+    text-align: center;
+    margin-bottom: 2rem; /* More space below the profile image */
+}
+
+.profile_image img {
+    max-width: 200px; /* Larger image */
+    border-radius: 50%;
+}
+
+.employee_info {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem; /* Increased gap between the information sections */
+}
+
+.view_con {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1.5rem; /* Added more space between items */
+}
+
+.view_txt {
+    font-weight: bold;
+    color: #2F3538;
+    font-size: 1.1rem; /* Slightly larger text */
+}
+
+.view_info {
+    color: #555;
+    font-style: italic;
+    font-size: 1.1rem; /* Slightly larger text */
+}
+
+/* Hide scrollbar (for Chrome, Safari, Edge) */
+main {
+    scrollbar-width: none; /* Firefox */
+    overflow: hidden;
+}
+
+body::-webkit-scrollbar {
+    display: none; /* Chrome, Safari */
+}
+
+/* For Chrome, Safari, and Edge: */
+body {
+    overflow-x: hidden; /* Disable horizontal scrolling */
+}

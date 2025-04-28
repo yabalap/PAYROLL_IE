@@ -1,12 +1,12 @@
 /* General button styling */
 .action_buttons button {
-    padding: 0.2rem 0.5rem;  /* Even smaller padding for more compact buttons */
-    font-size: 0.75rem;       /* Smaller font size */
+    padding: 0.1rem 0.3rem;  /* Even smaller padding for more compact buttons */
+    font-size: 0.65rem;       /* Smaller font size */
     border-radius: 3px;      /* Reduced border radius for a more compact appearance */
     border: none;
     cursor: pointer;
     transition: transform 0.2s ease;
-    margin: 0 0.3rem;         /* Space between buttons */
+    margin: 0 0.2rem;         /* Space between buttons */
 }
 
 /* Specific button styles */
@@ -83,19 +83,19 @@ td {
 .column-Action {
     display: flex;
     justify-content: space-evenly;
-    gap: 0.5rem;
+    gap: 0.3rem; /* Reduced gap between buttons */
 }
 
 .column-Action button {
-    padding: 0.2rem 0.5rem; /* Smaller padding for compact buttons */
+    padding: 0.1rem 0.3rem; /* Even smaller padding for more compact buttons */
     font-family: 'Roboto Slab';
-    font-size: 0.75rem;       /* Smaller font size */
+    font-size: 0.65rem;       /* Even smaller font size */
     font-weight: bold;
     border: none;
     border-radius: 3px;
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.2s ease;
-    min-width: 60px; /* Ensures the buttons remain compact */
+    min-width: 50px; /* Reduced minimum width for compactness */
 }
 
 /* === Pagination Styles === */
@@ -109,12 +109,12 @@ td {
 }
 
 .custom-pagination button {
-    padding: 0.4rem 0.9rem;
+    padding: 0.3rem 0.7rem; /* Smaller padding */
     background-color: #f0f0f0;
     color: #2F3538;
     font-family: 'Roboto Slab';
     font-weight: bold;
-    font-size: 0.9rem;
+    font-size: 0.8rem;       /* Smaller font size */
     border: none;
     border-radius: 8px;
     cursor: pointer;

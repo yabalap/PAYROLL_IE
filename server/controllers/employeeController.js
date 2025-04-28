@@ -4,6 +4,7 @@ import User from "../models/User.js"
 import bcrypt from 'bcrypt'
 import path from "path"
 import fs from 'fs'
+import Department from "../models/Department.js"; // add if not imported
 
 // Ensure upload folder exists
 const uploadPath = "public/uploads"
@@ -92,21 +93,34 @@ const addEmployee = async (req, res) => {
     }
 }
  
-import Department from "../models/Department.js"; // add if not imported
 
 const getEmployees = async (req, res) => {
     try {
-        const employees = await Employee.find()
-            .populate("userId", "name role")  // Populate `name` and `role` fields from the `User` model
-            .populate("department");
-
-        const departments = await Department.find();
-
-        return res.status(200).json({ success: true, employees, departments });
+        const employees = await Employee.find().populate("userId",{password: 0}).populate("department")
+        
+        return res.status(200).json({ success: true, employees });
     } catch (error) {
         return res.status(500).json({ success: false, error: "get Employee server error" });
     }
 };
 
+const getEmployee = async (req, res) => {
+    const { id } = req.params;  // Correctly extracting the 'id' from the URL
+    try {
+        const employee = await Employee.findById(id).populate('userId', { password: 0 }).populate("department");
 
-export { addEmployee, upload, getEmployees }
+        if (!employee) {
+            return res.status(404).json({ success: false, error: "Employee not found" });
+        }
+
+        return res.status(200).json({ success: true, employee });
+    } catch (error) {
+        console.error(error);  // For debugging purposes
+        return res.status(500).json({ success: false, error: "Server error while fetching employee" });
+    }
+};
+
+
+
+
+export { addEmployee, upload, getEmployees , getEmployee}

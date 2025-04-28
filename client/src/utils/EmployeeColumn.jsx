@@ -66,12 +66,23 @@ export const fetchDepartments = async () => {
     return departments
 };
 export const EmployeeButtons = ({ _id }) => {
+        const navigate = useNavigate(); // Get the navigate function from useNavigate hook
+
     return (
+        
         <div className="action_buttons">
-            <button className="view_btn">View</button>
-            <button className="update_btn">Update</button>
-            <button className="pay_btn">Payslip</button>
-            <button className="delete_btn">Leave</button>
+            <button className="view_btn"
+                onClick={() => navigate(`/admin-dashboard/employeeadmin/${_id}`)} // Use the _id prop here
+                >View</button>
+            <button className="update_btn"
+            
+            >Update</button>
+            <button className="pay_btn"
+            
+            >Payslip</button>
+            <button className="delete_btn"
+            
+            >Leave</button>
         </div>
     );
 };
