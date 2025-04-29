@@ -10,11 +10,13 @@ import { FaRegBuilding } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
 import IE_logo from "../../assets/LOGO_MINI.svg";
 
-
+import { useAuth } from '../../context/AuthContext'
 
 const AdminSidebar = ({ children }) => {
 
     const [isOpen, setIsOpen] = useState(true);
+    const {logout} = useAuth()
+
 
     const menulist = [
         {   
@@ -41,7 +43,7 @@ const AdminSidebar = ({ children }) => {
             path: "/payroll",
             name: "Payroll",
             icon: <IoCashOutline />
-        }
+        },
     ];
 
     return (
@@ -86,16 +88,16 @@ const AdminSidebar = ({ children }) => {
 
                 {/* Logout at bottom */}
                 <div className="logout_section">
-                    <NavLink
-                        to="/login"
-                        className="link logout"
-                        activeClassName="active"
+                    <button 
+                    className="link logout"
+                    activeClassName="active"
+                    onClick={logout}
                     >
                         <div className="icon"><IoLogOutOutline /></div>
                         <div className="link_text" style={{ display: isOpen ? "block" : "none" }}>
                             Logout
                         </div>
-                    </NavLink>
+                    </button>
                 </div>
             </div>
 

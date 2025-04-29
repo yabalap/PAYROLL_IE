@@ -110,7 +110,6 @@ const UpdateEmployee = () => {
                                 value={employee.firstName}
                                 onChange={handleChange}
                                 placeholder="Enter First Name"
-                                required
                             />
                         </div>
 
@@ -123,7 +122,6 @@ const UpdateEmployee = () => {
                                 value={employee.middleName}
                                 onChange={handleChange}
                                 placeholder="Enter Middle Name"
-                                required
                             />
                         </div>
 
@@ -136,7 +134,6 @@ const UpdateEmployee = () => {
                                 value={employee.lastName}
                                 onChange={handleChange}
                                 placeholder="Enter Last Name"
-                                required
                             />
                         </div>
 
@@ -147,7 +144,6 @@ const UpdateEmployee = () => {
                                 name="maritalStatus"
                                 value={employee.maritalStatus}
                                 onChange={handleChange}
-                                required
                             >
                                 <option value="">Select Status</option>
                                 <option value="single">Single</option>
@@ -165,7 +161,6 @@ const UpdateEmployee = () => {
                                 value={employee.position}
                                 onChange={handleChange}
                                 placeholder="Position"
-                                required
                             />
                         </div>
 
@@ -176,7 +171,6 @@ const UpdateEmployee = () => {
                                 name="department"
                                 value={employee.department}
                                 onChange={handleChange}
-                                required
                             >
                                 <option value="">Select Department</option>
                                 {departments.map((dep) => (
@@ -184,6 +178,21 @@ const UpdateEmployee = () => {
                                         {dep.dep_name}
                                     </option>
                                 ))}
+                            </select>
+                        </div>
+
+                        {/* Role */}
+                        <div>
+                            <label className="txt_employee">Position</label>
+                            <select
+                                name="role"
+                                value={employee.role}
+                                onChange={handleChange}
+                            >
+                                <option value="">Select Role</option>
+                                <option value="admin">Admin</option>
+                                <option value="employee">Employee</option>
+                                <option value="contractual">Contractual</option>
                             </select>
                         </div>
 
@@ -196,7 +205,7 @@ const UpdateEmployee = () => {
                                 value={employee.salaryMon}
                                 onChange={handleChange}
                                 placeholder="Enter Salary ( Enter 0 if N/A )"
-                                required
+                                
                             />
                         </div>
 
@@ -209,7 +218,7 @@ const UpdateEmployee = () => {
                                 value={employee.salaryDay}
                                 onChange={handleChange}
                                 placeholder="Enter Salary per Day ( Enter 0 if N/A )"
-                                required
+                                
                             />
                         </div>
 

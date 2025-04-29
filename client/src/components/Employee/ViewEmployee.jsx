@@ -38,7 +38,8 @@
         {/* Profile Image in the first column */}
         <div className="profile_image">
           {employee.userId.profileImage ? (
-            <img src={`http://localhost:5000/${employee.userId.profileImage}`} alt="Employee Profile" />
+            <img src={`http://localhost:5000/uploads/${employee.userId.profileImage}`} alt="Employee Profile" />
+
           ) : (
             <p>No picture uploaded yet</p>
           )}

@@ -101,7 +101,7 @@ const EmployeeAdmin = () => {
                             type="text"
                             value={searchTerm}
                             onChange={handleSearchChange}
-                            placeholder="Search by Department Name"
+                            placeholder="Search Employee"
                             className="txt_search"
                         />
                         <Link to="/admin-dashboard/add-employee" className="txt_add">

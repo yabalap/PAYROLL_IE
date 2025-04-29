@@ -4,49 +4,52 @@ import User from "../models/User.js"
 import bcrypt from 'bcrypt'
 import path from "path"
 import fs from 'fs'
-import Department from "../models/Department.js"; 
 
 // Ensure upload folder exists
-const uploadPath = "public/uploads"
+const uploadPath = "public/uploads";
 if (!fs.existsSync(uploadPath)) {
-    fs.mkdirSync(uploadPath, { recursive: true })
+    fs.mkdirSync(uploadPath, { recursive: true });
 }
 
 // Multer config
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
-        cb(null, uploadPath)  // ✅ FIXED
+        cb(null, uploadPath);  // Directory where images will be uploaded
     },
     filename: (req, file, cb) => {
-        cb(null, Date.now() + path.extname(file.originalname))
+        cb(null, Date.now() + path.extname(file.originalname));  // Ensures unique filenames
     }
-})
+});
 
 const upload = multer({ storage: storage })
 
 // Add Employee Controller
 const addEmployee = async (req, res) => {
     try {
-        const {
-            firstName,
-            middleName,
-            lastName,
-            employeeID,
-            email,
-            dob,
-            gender,
-            maritalStatus,
-            position,
-            department,
-            salaryMon,
-            salaryDay,
-            password,
-            role
+        console.log("File received:", req.file); // This should log the file object
+
+        const { 
+            firstName, 
+            middleName, 
+            lastName, 
+            employeeID, 
+            email, 
+            dob, 
+            gender, 
+            maritalStatus, 
+            position, 
+            department, 
+            salaryMon, 
+            salaryDay, 
+            password, 
+            role 
         } = req.body;
 
-        const user = await User.findOne({ email });
-        if (user) {
-            return res.status(400).json({ success: false, error: "User already registered in Employee" });
+        // Check if the image is processed correctly
+        if (req.file) {
+            console.log("Image file:", req.file.filename); // Ensure filename is being extracted
+        } else {
+            console.log("No image file received");
         }
 
         const hashPassword = await bcrypt.hash(password, 10);
@@ -54,14 +57,14 @@ const addEmployee = async (req, res) => {
         const fullName = [firstName, middleName, lastName].filter(Boolean).join(" ");
 
         const newUser = new User({
-            name: fullName, // ✅ Add the required `name` field
+            name: fullName,
             firstName,
             middleName,
             lastName,
             email,
             password: hashPassword,
             role,
-            profileImage: req.file ? req.file.filename : ""
+            profileImage: req.file ? req.file.filename : "", // Saving the image filename
         });
 
         const savedUser = await newUser.save();
@@ -75,23 +78,18 @@ const addEmployee = async (req, res) => {
             position,
             department,
             salaryMon,
-            salaryDay
+            salaryDay,
         });
 
         await newEmployee.save();
 
         return res.status(200).json({ success: true, message: "Employee Created" });
-
     } catch (error) {
         console.error("Add Employee Error:", error.message);
-        if (error.name === 'ValidationError') {
-            for (let field in error.errors) {
-                console.error(`${field}: ${error.errors[field].message}`);
-            }
-        }
         return res.status(500).json({ success: false, message: "Server Error in Adding Employee" });
     }
-}
+};
+
  
 
 const getEmployees = async (req, res) => {
@@ -105,17 +103,23 @@ const getEmployees = async (req, res) => {
 };
 
 const getEmployee = async (req, res) => {
-    const { id } = req.params;  // Correctly extracting the 'id' from the URL
+    const { id } = req.params;  
     try {
-        const employee = await Employee.findById(id).populate('userId', { password: 0 }).populate("department");
+        let employee;
+        employee = await Employee.findById({_id: id})
+        .populate('userId', { password: 0 })
+        .populate("department");
 
         if (!employee) {
-            return res.status(404).json({ success: false, error: "Employee not found" });
+
+        employee = await Employee.findOne({userId: id})
+            .populate('userId', { password: 0 })
+            .populate("department");
+
         }
 
         return res.status(200).json({ success: true, employee });
     } catch (error) {
-        console.error(error);  // For debugging purposes
         return res.status(500).json({ success: false, error: "Server error while fetching  get employee" });
     }
 };
@@ -131,6 +135,7 @@ const updateEmployee = async (req, res) => {
             department,
             salaryMon,
             salaryDay,
+            role,
         } = req.body;  // Extract the update fields from the request body
 
         // Find the employee using the provided ID

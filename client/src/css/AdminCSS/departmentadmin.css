@@ -18,6 +18,8 @@ body::-webkit-scrollbar {
 }
 
 .txt_department {
+    padding-top: 40px;
+
     display: flex;
     justify-content: center;  
     width: 100%;  

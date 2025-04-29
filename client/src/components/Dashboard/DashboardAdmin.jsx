@@ -8,7 +8,7 @@ import { RiFilePaper2Fill } from "react-icons/ri";
 import { FaPlaneDeparture } from "react-icons/fa";
 import { FaRegClock } from "react-icons/fa";
 
-import DashboardCard from '../../components/Dashboard/DashboardCard'; // Import the Card component
+import AdminCard from './AdminCard'; // Import the Card component
 import '../../css/AdminCSS/admindashboard.css';
 
 const DashboardAdmin = () => {
@@ -37,9 +37,9 @@ const DashboardAdmin = () => {
     return (
         <div className="Total">
             {/* Main Totals */}
-            <DashboardCard title="Employees" count={employee} icon={FaUsers} />
-            <DashboardCard title="Departments" count={department} icon={FaRegBuilding} />
-            <DashboardCard title="Payslips" count={payslip} icon={RiFilePaper2Fill} />
+            <AdminCard title="Employees" count={employee} icon={FaUsers} />
+            <AdminCard title="Departments" count={department} icon={FaRegBuilding} />
+            <AdminCard title="Payslips" count={payslip} icon={RiFilePaper2Fill} />
 
             {/* Pending Leave and OT in separate cards */}
             <div className="cards pending-combined">

@@ -12,8 +12,10 @@ main {
 }
 
 .employee_containers {
-    margin-left: 16%;
+
+    margin-top: 30px;
     display: flex;
+    margin-left: 10%;
     justify-content: center;
     align-items: flex-start;
     padding: 0.5rem; /* Increased padding */
@@ -46,9 +48,8 @@ main {
 .profile_image img {
     max-width: 100%;
     width: 100%;
-    height: auto;
-    max-height: 300px; /* Increased max height for the profile image */
-    border-radius: 50%;
+    height: 100%;
+    border-radius: 5%;
 }
 
 .employee_info {

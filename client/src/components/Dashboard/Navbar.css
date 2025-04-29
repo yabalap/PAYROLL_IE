@@ -1,0 +1,69 @@
+/* Default Navbar Style */
+.navbarAdmin {
+  margin: -48px;
+  display: flex;
+  justify-content: space-between;
+  background-color: #2F3538;
+  padding: 0.5rem 1.5rem;
+  color: white;
+  position: fixed;
+  width: 100%;
+  height: 40px; /* Default navbar height */
+}
+
+.navbarAdmin .linkss {
+  display: flex;
+  align-items: center;
+  color: white;
+  text-decoration: none;
+  background-color: #2F3538;
+}
+
+/* Navbar menu adjustments */
+.navbarMenu {
+  display: flex;
+  justify-content: space-between; /* Distribute icons with space in between */
+  width: 80px; /* Set a width to make sure the icons have space between them */
+  margin-left: 79%; /* Adjust position of navbar menu */
+}
+
+/* Profile icon size and zoom effect */
+.iconss {
+  font-size: 2rem; /* Default size */
+  transition: transform 0.3s ease-in-out; /* Smooth zoom effect */
+}
+
+/* Hover zoom effect */
+.iconss:hover {
+  transform: scale(1.2); /* Zoom in by 20% */
+}
+
+/* Media query for tablets or smaller screens (e.g., 768px) */
+@media (max-width: 768px) {
+  .iconss {
+    font-size: 1.5rem; /* Smaller icon size for tablets */
+  }
+
+  .iconss:hover {
+    transform: scale(1.15); /* Slightly smaller zoom effect for tablets */
+  }
+
+  .navbarAdmin {
+    height: 50px; /* Adjust navbar height on tablets */
+  }
+}
+
+/* Media query for mobile screens (e.g., 480px) */
+@media (max-width: 480px) {
+  .iconss {
+    font-size: 1.2rem; /* Even smaller icon size for mobile */
+  }
+
+  .iconss:hover {
+    transform: scale(1.1); /* Smaller zoom effect for mobile */
+  }
+
+  .navbarAdmin {
+    height: 45px; /* Adjust navbar height for mobile */
+  }
+}
